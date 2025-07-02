@@ -13,17 +13,6 @@ To demonstrate the process of designing and building a data warehouse using best
 - SQL Server Management Studio (SSMS)
 - Visual Studio with SSIS Projects extension
 
-## Project Structure
-
-NorthWind/
-├── SQL/                       # SQL scripts for schema and data  
-│   ├── create_oltp_schema.sql  
-│   ├── create_dw_schema.sql  
-│   ├── insert_sample_data.sql (optional)  
-│   └── populate_dim_date.sql (optional)  
-├── SSIS_ETL-Packages/         # SSIS packages and solution files  
-├── Assets/                    # Architecture diagrams, ETL screenshots  
-├── Doc/                       # Project documentation and notes  
 
 ## Schema Overview
 
@@ -44,4 +33,45 @@ The OLTP system is modeled after the original Northwind database, including:
 
 **Dimension Tables**  
 - `DimCustomer`  
-- `DimProduct
+- `DimProduct`  
+- `DimEmployee`  
+- `DimSupplier`  
+- `DimShippers`  
+- `DimAddress`  
+- `DimDate`  
+
+The model uses surrogate keys, handles slowly changing dimensions (Type 2), and integrates date intelligence features.
+
+## ETL Architecture
+
+The ETL process is implemented in SSIS and includes:
+
+- Data extraction from the OLTP schema  
+- Lookup operations for surrogate key assignment  
+- Type 2 SCD implementation for dimension history  
+- Data transformation and cleansing  
+- Loading into staging, dimension, and fact tables  
+
+Each SSIS package is designed to load a specific target (e.g., DimCustomer, FactOrders) and can be executed independently or as part of a scheduled pipeline.
+
+## Usage Instructions
+
+1. Clone this repository to your local machine.
+2. Create and populate both OLTP and DW schemas using the SQL scripts in the `SQL/` folder.
+3. Open the SSIS solution in Visual Studio and execute the ETL packages.
+4. Query the data warehouse or connect to BI tools such as Power BI for reporting.
+
+## Requirements
+
+- Microsoft SQL Server 2019 or later  
+- Visual Studio with the SSIS Projects extension installed  
+- SQL Server Management Studio (SSMS)  
+
+## License
+
+This project is intended for academic, training, and demonstration purposes.
+
+## Author
+
+**Omar Adel Meligy**  
+Production and Data Engineer
