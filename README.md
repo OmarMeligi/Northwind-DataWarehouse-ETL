@@ -6,6 +6,8 @@ This repository contains a complete data warehousing solution based on the North
 
 To demonstrate the process of designing and building a data warehouse using best practices in dimensional modeling and ETL development. The project supports analytical reporting on orders, customers, products, suppliers, and employees.
 
+**Note**: All data in the OLTP system was generated using AI tools for training and demonstration purposes. It is entirely fictional and localized to reflect entities in Egypt. It does not represent any real individuals, businesses, or transactions.
+
 ## Technologies Used
 
 - SQL Server 2019
@@ -18,13 +20,15 @@ To demonstrate the process of designing and building a data warehouse using best
 
 ### OLTP Source (Normalized)
 
-The OLTP system is modeled after the original Northwind database, including:
+The OLTP system is modeled after the original Northwind database and adapted to simulate localized business operations in Egypt. It includes:
 
 - Customers  
 - Employees  
 - Orders and Order Details  
 - Products, Categories, Suppliers  
 - Shippers, Regions, Territories  
+
+**Disclaimer**: The data is artificially generated for the purpose of this educational project. It does not reflect real entities or transactions.
 
 ### Data Warehouse (Star Schema)
 
@@ -66,7 +70,3 @@ Each SSIS package is designed to load a specific target (e.g., DimCustomer, Fact
 - Microsoft SQL Server 2019 or later  
 - Visual Studio with the SSIS Projects extension installed  
 - SQL Server Management Studio (SSMS)  
-
-## License
-
-This project is intended for academic, training, and demonstration purposes.
