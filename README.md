@@ -1,78 +1,47 @@
-# Northwind-DW-SSIS
+# Northwind Data Warehouse with SSIS ETL
 
-This project builds a Data Warehouse from the Northwind OLTP system using SQL Server and SSIS. It demonstrates dimensional modeling, ETL design, and data integration following best practices for business intelligence projects.
+This repository contains a complete data warehousing solution based on the Northwind transactional database. The project includes dimensional modeling, ETL processes implemented in SQL Server Integration Services (SSIS), and SQL scripts for creating and populating both the OLTP and Data Warehouse schemas.
 
-## Project Overview
+## Objective
 
-- Source System: Northwind OLTP schema (normalized)
-- Target System: Dimensional Data Warehouse (star schema)
-- ETL Tool: SQL Server Integration Services (SSIS)
-- Database: Microsoft SQL Server
-- Objective: Enable structured analysis of orders, customers, employees, products, and suppliers
+To demonstrate the process of designing and building a data warehouse using best practices in dimensional modeling and ETL development. The project supports analytical reporting on orders, customers, products, suppliers, and employees.
 
-## Repository Structure
+## Technologies Used
+
+- SQL Server 2019
+- SQL Server Integration Services (SSIS)
+- SQL Server Management Studio (SSMS)
+- Visual Studio with SSIS Projects extension
+
+## Project Structure
 
 NorthWind/
-├── Assets/                  # Screenshots, diagrams, visuals  
-├── Doc/                     # Documentation (PDFs, notes, markdown)  
-├── SQL/                     # SQL scripts to create and populate schemas  
-├── SSIS_ETL-Packages/       # SSIS solution and ETL packages  
+├── SQL/                       # SQL scripts for schema and data  
+│   ├── create_oltp_schema.sql  
+│   ├── create_dw_schema.sql  
+│   ├── insert_sample_data.sql (optional)  
+│   └── populate_dim_date.sql (optional)  
+├── SSIS_ETL-Packages/         # SSIS packages and solution files  
+├── Assets/                    # Architecture diagrams, ETL screenshots  
+├── Doc/                       # Project documentation and notes  
 
-## SQL Scripts
+## Schema Overview
 
-Located in the `SQL/` directory:
+### OLTP Source (Normalized)
 
-- `create_oltp_schema.sql`: Defines the OLTP source schema (based on Northwind)
-- `create_dw_schema.sql`: Defines the Data Warehouse dimensional model
-- `populate_dim_date.sql`: Script to generate the DimDate dimension
-- `insert_sample_data.sql`: Optional test data (if included)
+The OLTP system is modeled after the original Northwind database, including:
 
-## ETL Packages
+- Customers  
+- Employees  
+- Orders and Order Details  
+- Products, Categories, Suppliers  
+- Shippers, Regions, Territories  
 
-Located in the `SSIS_ETL-Packages/` directory. Each package is designed to extract, transform, and load one dimension or fact table. The ETL follows a modular structure:
+### Data Warehouse (Star Schema)
 
-- DimCustomer.dtsx  
-- DimProduct.dtsx  
-- DimEmployee.dtsx  
-- FactOrders.dtsx  
-- NorthWind_ETL.sln (SSIS solution file)
+**Fact Table**  
+- `FactOrders`: Measures related to sales performance, delivery, freight, and returns
 
-The ETL process includes:
-
-- Surrogate key generation
-- Slowly Changing Dimensions (SCD Type 2) handling
-- Date dimension linkage
-- Lookup and data cleansing operations
-
-## Data Warehouse Model
-
-The Data Warehouse uses a star schema consisting of:
-
-- Fact Table:
-  - `FactOrders`: Measures sales, delivery status, return flags, etc.
-- Dimensions:
-  - `DimCustomer`
-  - `DimProduct`
-  - `DimEmployee`
-  - `DimSupplier`
-  - `DimShippers`
-  - `DimAddress`
-  - `DimDate`
-
-## How to Use
-
-1. Restore or recreate the OLTP and DW schemas using the scripts in the `SQL/` folder.
-2. Open the SSIS solution in Visual Studio.
-3. Execute ETL packages in sequence to populate dimension and fact tables.
-4. Perform queries or connect to visualization tools such as Power BI for reporting.
-
-## Requirements
-
-- SQL Server 2019 or later
-- Visual Studio with SSIS extension
-- SQL Server Management Studio (SSMS)
-
-## Author
-
-Omar Adel Meligy  
-Production and Data Engineer
+**Dimension Tables**  
+- `DimCustomer`  
+- `DimProduct
