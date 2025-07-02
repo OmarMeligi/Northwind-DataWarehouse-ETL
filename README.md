@@ -70,8 +70,3 @@ Each SSIS package is designed to load a specific target (e.g., DimCustomer, Fact
 ## License
 
 This project is intended for academic, training, and demonstration purposes.
-
-## Author
-
-**Omar Adel Meligy**  
-Production and Data Engineer
